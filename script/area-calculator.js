@@ -13,6 +13,8 @@ function calculateTriangleArea() {
     heightField.value = '';
     const triangleArea = document.getElementById('triangle-area');
     triangleArea.innerText = area;
+    addToClaculationEntry('Triangle', area);
+
 
 
 
@@ -37,6 +39,8 @@ function claculateRectangleArea() {
     console.log(area);
     const rectangleArea = document.getElementById('rectangle-area');
     rectangleArea.innerText = area;
+    addToClaculationEntry('Rectangle', area);
+
    
 
 
@@ -46,9 +50,9 @@ function claculateRectangleArea() {
 
 function calculateParalleloramArea() {
     const base = getInputValue('parallelogram-base');
-    console.log(base);
+    // console.log(base);
     const height = getInputValue('parallelogram-height');
-    console.log(height);
+    // console.log(height);
     if(isNaN(base) || isNaN(height)){
         alert('Plaese valid a number');
         return;
@@ -57,6 +61,8 @@ function calculateParalleloramArea() {
     // const parallelogramArea = document.getElementById('parallelogram-area');
     // parallelogramArea.innerText = area;
     setElemnetInnerText('parallelogram-area', area);
+
+    addToClaculationEntry('Parallelogram', area);
 
 
 
@@ -68,6 +74,8 @@ function calculateEllipseArea(){
     const area = 3.1416 * majorRaduis * minorRajius;
     const areaTwoDecimal= area.toFixed(2);
     setElemnetInnerText('ellipse-area', areaTwoDecimal);
+    addToClaculationEntry('Ellipse', areaTwoDecimal);
+
 }
 function getInputValue(fieldId){
     const inputField = document.getElementById(fieldId);
@@ -79,5 +87,16 @@ function setElemnetInnerText(elementId, area){
     const element = document.getElementById(elementId);
     element.innerText = area;
 }
+
+// add to calculation entry
+function addToClaculationEntry(areaType, area){
+    console.log(areaType+ ' ' +area);
+    const calculateEntry = document.getElementById('calculation-entry');
+    const count = calculateEntry.childElementCount;
+    const p = document.createElement('p');
+    p.innerHTML =`${count}. ${areaType} ${area} cm<sup>2</sup>`;
+    calculateEntry.appendChild(p);
+}
+
 // Data validation 
 
